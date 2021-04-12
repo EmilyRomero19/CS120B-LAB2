@@ -24,7 +24,7 @@ int main(void) {
         //read input
 	cntavail = PINA;
 	
-	if(cntavail == 0x00){
+	if(cntavail == 0x00 && cntavail == 0x80){
 	PORTC = 0x04;
     }
 	else if(cntavail == 0x01 || cntavail == 0x02 || cntavail == 0x04 || cntavail == 0x08){
