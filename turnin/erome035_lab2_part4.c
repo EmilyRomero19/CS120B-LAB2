@@ -14,11 +14,13 @@
 
 int main(void) {
     /* Insert DDR and PORT initializations */
+	
+	// THREE PORTS. A,B & C
 	DDRA = 0x00; PORTA = 0xFF;
-	DDRB = 0xFF; PORTB - 0x00;
+	DDRB = 0x00; PORTB - 0xFF;
 	DDRC = 0x00; PORTC = 0xFF;
-	DDRD = 0xFF; PORTD = 0x00;
-
+	
+        // TEMPS TO HOLD DATA 
         unsigned char tmp1 = 0x00;
 	unsigned char tmp2 = 0x00;
 	unsigned char tmp3 = 0x00;
@@ -29,35 +31,26 @@ int main(void) {
 
     while (1) {
 
-        //read input
+        //read inputS
 	tmp1 = PINA;
 	tmp2 = PINB;
 	tmp3 = PINC;
-	tmp4 = 0x00;
-	tmp5 = 0x00;
-	
-	weight = tmp1 + tmp2 + tmp3;	
+	    
+	weight = tmp1 + tmp2 + tmp3; // The weight is what is sensed by the three sensors 
 
-	if(weight > 0x008C){
-		tmp4 = 0x01;
+	if(weight > 0x8C){ //if weight is bigger than 140 
+		tmp4 = 0x01; // PD0 = 1 "TRUE"
     }
 	else{
-		tmp4 = 0x02;
+		tmp4 = 0x00; // PD0 = 0 "FALSE"
        }
 
-	if(tmp1 > tmp3){
-		if((tmp3 - tmp1) > 0x50){
-			tmp5 = 0x02;
-		}
-	}
+	if((tmp1 - tmp3) > 0x50){ // A - C > 80
+		
+		tmp5 = 0x01; //PD1
 	
-	else{
-		if((tmp3 - tmp1) > 0x50){
-			tmp5 = 0x02;
-		}
 	}
-		PORTD = (weight & 0x00FC) | tmp4 || tmp5;
-				
+		PORTD = (totalWeight & 0x00FC) | tmp4 | tmp5;		
     }
     return 1;
 }
