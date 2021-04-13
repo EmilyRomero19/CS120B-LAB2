@@ -38,12 +38,13 @@ int main(void) {
 	    
 	weight = tmp1 + tmp2 + tmp3; // The weight is what is sensed by the three sensors 
 
-	if(weight > 0x8C){ //if weight is bigger than 140 
+	if(weight > 0x008C){ //if weight is bigger than 140 
 		tmp4 = 0x01; // PD0 = 1 "TRUE"
-    }
+        }
+	    
 	else{
 		tmp4 = 0x00; // PD0 = 0 "FALSE"
-       }
+        }
 
 	if((tmp1 - tmp3) > 0x50){ // A - C > 80
 		
