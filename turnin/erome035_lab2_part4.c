@@ -50,7 +50,7 @@ int main(void) {
 		tmp5 = 0x01; //PD1
 	
 	}
-		PORTD = (totalWeight & 0x00FC) | tmp4 | tmp5;		
+		PORTD = (weight & 0x00FC) | tmp4 | tmp5;		
     }
     return 1;
 }
