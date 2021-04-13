@@ -35,6 +35,8 @@ int main(void) {
 	tmp1 = PINA;
 	tmp2 = PINB;
 	tmp3 = PINC;
+	tmp4 = 0x00;
+	tmp5 = 0x00;
 	    
 	weight = tmp1 + tmp2 + tmp3; // The weight is what is sensed by the three sensors 
 
